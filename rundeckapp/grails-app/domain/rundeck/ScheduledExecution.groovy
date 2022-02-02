@@ -387,8 +387,8 @@ class ScheduledExecution extends ExecutionContext implements EmbeddedJsonData {
                     trigger.add(map1)
                 }
             }
-            map.keySet().findAll{it.startsWith('on')}.each { trigger ->
-                map.notification[trigger].find({ notif -> notif.plugin }).plugin.sort{ a, b -> a.type <=> b.type }
+            map.notification.keySet().findAll{it.startsWith('on')}.each { trigger ->
+                map.notification[trigger].find{ notif -> notif.plugin }.plugin.sort{ a, b -> a.type <=> b.type }
             }
             map.notifyAvgDurationThreshold = notifyAvgDurationThreshold
         }
